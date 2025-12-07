@@ -269,23 +269,25 @@
 
     /* LOGO + COMPANY */
     .company {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 
-    .company-logo {
-      width: 20px;
-      height: 20px;
-      object-fit: contain;
-      opacity: 0.85;
-      filter: grayscale(100%);
-    }
+.company-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  opacity: 0.95;
+}
 
-    :root[data-theme="dark"] .company-logo {
-      opacity: 0.95;
-      filter: grayscale(100%) brightness(1.1);
-    }
+/* Dark mode'da logonun arkasına hafif açık bir kutu verelim ki kaybolmasın */
+:root[data-theme="dark"] .company-logo {
+  background: rgba(249, 250, 251, 0.9); /* çok açık gri */
+  border-radius: 4px;
+  padding: 2px;
+}
+
 
     ul {
       margin-left: 18px;
