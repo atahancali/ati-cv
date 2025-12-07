@@ -267,6 +267,26 @@
       white-space: nowrap;
     }
 
+    /* LOGO + COMPANY */
+    .company {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .company-logo {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      opacity: 0.85;
+      filter: grayscale(100%);
+    }
+
+    :root[data-theme="dark"] .company-logo {
+      opacity: 0.95;
+      filter: grayscale(100%) brightness(1.1);
+    }
+
     ul {
       margin-left: 18px;
       font-size: 0.9rem;
@@ -314,7 +334,7 @@
 
     <header>
       <div class="top-row">
-        <div class="brand">ATAHAN · RESUME</div>
+        <div class="brand">· RESUME ·</div>
         <nav>
           <div class="nav-links">
             <a href="#summary">Summary</a>
@@ -379,7 +399,10 @@
 
           <div class="item">
             <div class="item-header">
-              <div>NIKE – Logistics Analyst</div>
+              <div class="company">
+                <img src="logos/nike-logo.svg" alt="Nike logo" class="company-logo">
+                <span>NIKE – Logistics Analyst</span>
+              </div>
               <div class="item-time">2025</div>
             </div>
             <div class="item-sub">Istanbul, Turkey</div>
@@ -392,7 +415,10 @@
 
           <div class="item">
             <div class="item-header">
-              <div>NIKE – Retail Sales Intern</div>
+              <div class="company">
+                <img src="logos/nike-logo.svg" alt="Nike logo" class="company-logo">
+                <span>NIKE – Retail Sales Intern</span>
+              </div>
               <div class="item-time">2023–2024</div>
             </div>
             <div class="item-sub">Istanbul, Turkey</div>
@@ -405,7 +431,10 @@
 
           <div class="item">
             <div class="item-header">
-              <div>Nesine – CRM Intern</div>
+              <div class="company">
+                <img src="logos/nesine-logo.jpg" alt="Nesine.com logo" class="company-logo">
+                <span>Nesine – CRM Intern</span>
+              </div>
               <div class="item-time">2024</div>
             </div>
             <div class="item-sub">Istanbul, Turkey</div>
@@ -418,7 +447,10 @@
 
           <div class="item">
             <div class="item-header">
-              <div>KPMG – Data Analytics & Digital Advisory Trainee</div>
+              <div class="company">
+                <img src="logos/kpmg-logo.png" alt="KPMG logo" class="company-logo">
+                <span>KPMG – Data Analytics & Digital Advisory Trainee</span>
+              </div>
               <div class="item-time">2022–2023</div>
             </div>
             <div class="item-sub">Istanbul, Turkey</div>
@@ -457,7 +489,11 @@
           <h2>Education</h2>
           <div class="item">
             <div class="item-header">
-              <div>Istanbul Technical University (ITU)</div>
+              <div class="company">
+                <img src="logos/itu-logo.png" alt="ITU logo" class="company-logo">
+                <span>Istanbul Technical University (ITU)</span>
+              </div>
+
               <div class="item-time">2020–2025</div>
             </div>
             <div class="item-sub">B.Sc. Industrial Engineering — GPA: 3.08 / 4.00</div>
