@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <title>Ilyas Atahan Caliskan | Resume</title>
@@ -13,15 +13,27 @@
       --muted: #666666;
       --accent: #2563eb;
       --border: #e5e5e5;
-      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow: 0 8px 20px rgba(0,0,0,0.04);
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0f172a;
+      --card-bg: #020617;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --border: #1f2937;
+      --shadow: 0 10px 30px rgba(0,0,0,0.7);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: var(--font-main);
-      background: var(--bg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, rgba(148,163,184,0.18), transparent 60%), var(--bg);
       color: var(--text);
       line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
 
     .page {
@@ -31,11 +43,12 @@
     }
 
     .card {
-      background: var(--card-bg);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.06), transparent 55%), var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 18px;
       padding: 24px 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
     }
 
     header {
@@ -49,36 +62,79 @@
       padding-bottom: 16px;
     }
 
-    .name-block h1 { font-size: 1.8rem; margin-bottom: 4px; }
-    .name-block span { font-size: 0.95rem; color: var(--muted); }
+    .name-block h1 {
+      font-size: 1.9rem;
+      margin-bottom: 4px;
+      letter-spacing: 0.02em;
+    }
 
-    .contact { text-align: right; font-size: 0.9rem; }
-    .contact a { color: var(--accent); text-decoration: none; }
-    .contact a:hover { text-decoration: underline; }
+    .name-block span {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
 
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .contact {
+      text-align: right;
+      font-size: 0.9rem;
+    }
+
+    .contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
     .tag {
-      padding: 4px 8px;
+      padding: 4px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
       color: var(--muted);
-      background: #fafafa;
-      font-size: 0.8rem;
+      background: rgba(15,23,42,0.02);
+      font-size: 0.78rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
     }
 
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       padding: 6px 12px;
       font-size: 0.85rem;
       border-radius: 999px;
       border: 1px solid var(--accent);
       color: var(--accent);
       text-decoration: none;
-      margin-top: 10px;
-      transition: 0.15s ease;
+      cursor: pointer;
+      background: transparent;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
     }
 
-    .btn:hover { background: var(--accent); color: #fff; }
+    .btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn span.icon {
+      font-size: 0.9rem;
+    }
 
     main {
       margin-top: 16px;
@@ -90,16 +146,21 @@
     @media (max-width: 780px) {
       main { grid-template-columns: 1fr; }
       .contact { text-align: left; }
+      header { align-items: flex-start; }
     }
 
+    section { margin-bottom: 18px; }
+
     h2 {
-      font-size: 1rem;
+      font-size: 0.98rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 6px;
     }
 
     .item { margin-bottom: 12px; }
+
     .item-header {
       display: flex;
       justify-content: space-between;
@@ -120,198 +181,264 @@
       white-space: nowrap;
     }
 
-    ul { margin-left: 18px; font-size: 0.9rem; color: #333; margin-top: 4px; }
+    ul {
+      margin-left: 18px;
+      font-size: 0.9rem;
+      color: #d1d5db;
+      margin-top: 4px;
+    }
 
-    .pill-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    :root[data-theme="light"] ul {
+      color: #333333;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
     .pill {
       font-size: 0.8rem;
       border-radius: 999px;
       padding: 3px 8px;
       border: 1px solid var(--border);
-      background: #fafafa;
+      background: rgba(15,23,42,0.02);
+      color: var(--muted);
     }
 
-    .muted { font-size: 0.88rem; color: var(--muted); }
-    footer { margin-top: 26px; font-size: 0.78rem; text-align: center; color: var(--muted); }
+    .muted {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 26px;
+      font-size: 0.78rem;
+      text-align: center;
+      color: var(--muted);
+    }
   </style>
 </head>
 
 <body>
 <div class="page">
-<div class="card">
+  <div class="card">
 
-<header>
-  <div class="name-block">
-    <h1>Ilyas Atahan Caliskan</h1>
-    <span>Industrial Engineering | Logistics Analyst | CRM & Marketing Analytics</span>
+    <header>
+      <div class="name-block">
+        <h1>Ilyas Atahan Caliskan</h1>
+        <span>Industrial Engineering | Logistics Analyst | CRM & Marketing Analytics</span>
 
-    <div class="tags">
-      <span class="tag">Data Analytics</span>
-      <span class="tag">CRM & Growth</span>
-      <span class="tag">Python</span>
-      <span class="tag">SQL</span>
-      <span class="tag">Supply Chain</span>
-    </div>
+        <div class="tags">
+          <span class="tag">Data Analytics</span>
+          <span class="tag">CRM & Growth</span>
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Supply Chain</span>
+        </div>
 
-    <a class="btn" href="cv.pdf" target="_blank">Download PDF</a>
+        <div class="btn-row">
+          <!-- PDF ismin cv.pdf ise burası aynı kalsın -->
+          <a class="btn" href="cv.pdf" target="_blank" rel="noopener">
+            <span class="icon">⬇️</span><span>Download PDF</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div><a href="mailto:caliskaniatahan@gmail.com">caliskaniatahan@gmail.com</a></div>
+        <div>+90 539 592 9192</div>
+        <div>Istanbul, Turkey</div>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- LEFT SIDE -->
+      <div>
+        <section>
+          <h2>Summary</h2>
+          <p class="muted">
+            Data-driven Industrial Engineering graduate with experience in logistics operations, CRM analytics,
+            and performance optimization across retail, sports tech, and consulting environments. Skilled in
+            predictive modelling, segmentation, operational planning, and data visualization. Adept at connecting
+            business needs with analytical insights to support decision-making and drive measurable impact.
+          </p>
+        </section>
+
+        <section>
+          <h2>Experience</h2>
+
+          <div class="item">
+            <div class="item-header">
+              <div>NIKE – Logistics Analyst</div>
+              <div class="item-time">2025</div>
+            </div>
+            <div class="item-sub">Istanbul, Turkey</div>
+            <ul>
+              <li>Ensured operational continuity for 61 retail doors by managing stock accuracy, inbound/outbound flows, and cross-dock execution.</li>
+              <li>Managed returns within contractual thresholds and developed a tracking dashboard for partner allowances.</li>
+              <li>Executed SAP-driven stock adjustments, order creation, and corrections to secure inventory reliability and operational stability.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <div>NIKE – Retail Sales Intern</div>
+              <div class="item-time">2023–2024</div>
+            </div>
+            <div class="item-sub">Istanbul, Turkey</div>
+            <ul>
+              <li>Analyzed weekly business performance to identify risks and opportunities across 54 stores.</li>
+              <li>Developed Excel–Tableau reporting tools that enhanced visibility of store KPIs and supported the opening of 2 new retail locations.</li>
+              <li>Managed internal communication channels and produced event visuals, improving employee engagement and communication effectiveness.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <div>Nesine – CRM Intern</div>
+              <div class="item-time">2024</div>
+            </div>
+            <div class="item-sub">Istanbul, Turkey</div>
+            <ul>
+              <li>Led KPI tracking and business performance initiatives, contributing to a 150% market share increase for atyarisi.com.</li>
+              <li>Designed and executed segmented marketing campaigns to enhance acquisition, engagement, and retention.</li>
+              <li>Developed a statistical racing product enriched with advanced metrics and logic, strengthening the platform’s competitive edge.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <div>KPMG – Data Analytics & Digital Advisory Trainee</div>
+              <div class="item-time">2022–2023</div>
+            </div>
+            <div class="item-sub">Istanbul, Turkey</div>
+            <ul>
+              <li>Served as Scrum Master in a Data Flow transformation project for a major Iraqi telecom operator, improving execution efficiency by 45%.</li>
+              <li>Supported a data monetization project using generative AI to model customer reactions and uncover revenue opportunities.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Leadership & Activities</h2>
+          <div class="item">
+            <div class="item-header">
+              <div>ITU Industrial Engineering Society — Vice President</div>
+              <div class="item-time">2022–2023</div>
+            </div>
+            <ul>
+              <li>Oversaw strategic planning, budgeting, and management of 12 large-scale professional events.</li>
+            </ul>
+
+            <div class="item-header" style="margin-top: 8px;">
+              <div>Social Activities Leader & Internal Relations</div>
+              <div class="item-time">2021–2022</div>
+            </div>
+            <ul>
+              <li>Organized 25+ online/offline events; managed sponsorships and internal communication operations.</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div>
+        <section>
+          <h2>Education</h2>
+          <div class="item">
+            <div class="item-header">
+              <div>Istanbul Technical University (ITU)</div>
+              <div class="item-time">2020–2025</div>
+            </div>
+            <div class="item-sub">B.Sc. Industrial Engineering — GPA: 3.08 / 4.00</div>
+            <p class="muted">
+              Relevant Coursework: People Analytics, Marketing & CRM Analytics, Decision Theory<br>
+              Thesis: Data Mining for Performance Analysis in Turkish Süper Lig (10 seasons) — Predictive modelling, pattern extraction and advanced performance metrics using Python.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Skills</h2>
+          <div class="pill-list">
+            <span class="pill">Python</span>
+            <span class="pill">SQL</span>
+            <span class="pill">MS Office</span>
+            <span class="pill">SAP</span>
+            <span class="pill">Tableau</span>
+            <span class="pill">SPSS</span>
+            <span class="pill">AutoCAD</span>
+            <span class="pill">Adobe Photoshop</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Languages</h2>
+          <ul>
+            <li>Turkish — Native</li>
+            <li>English — Advanced</li>
+            <li>French — Basic</li>
+            <li>German — Basic</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Theme</h2>
+          <p class="muted">Switch between light and dark mode.</p>
+          <button id="theme-toggle" class="btn" type="button">
+            <span class="icon" id="theme-icon">🌙</span>
+            <span id="theme-label">Dark mode</span>
+          </button>
+        </section>
+      </div>
+
+    </main>
+
+    <footer>
+      Last updated: 2025 — This page is built with static HTML. Theme preference is stored in your browser.
+    </footer>
+
   </div>
-
-  <div class="contact">
-    <div><a href="mailto:caliskaniatahan@gmail.com">caliskaniatahan@gmail.com</a></div>
-    <div>+90 539 592 9192</div>
-    <div>Istanbul, Turkey</div>
-  </div>
-</header>
-
-<main>
-
-<!-- LEFT SIDE -->
-<div>
-
-  <section>
-    <h2>Summary</h2>
-    <p class="muted">
-      Data-driven Industrial Engineering graduate with experience in logistics operations, CRM analytics,
-      and performance optimization across retail, sports tech, and consulting environments. Skilled in
-      predictive modelling, segmentation, operational planning, and data visualization. Adept at connecting
-      business needs with analytical insights to support decision-making and drive measurable impact.
-    </p>
-  </section>
-
-  <section>
-    <h2>Experience</h2>
-
-    <!-- NIKE - Logistics Analyst -->
-    <div class="item">
-      <div class="item-header">
-        <div>NIKE – Logistics Analyst</div>
-        <div class="item-time">2025</div>
-      </div>
-      <div class="item-sub">Istanbul, Turkey</div>
-      <ul>
-        <li>Ensured operational continuity for 61 retail doors by managing stock accuracy, inbound/outbound flows, and cross-dock execution.</li>
-        <li>Managed returns within contractual thresholds and developed a tracking dashboard for partner allowances.</li>
-        <li>Executed SAP-driven stock adjustments, order creation, and corrections to secure inventory reliability and operational stability.</li>
-      </ul>
-    </div>
-
-    <!-- NIKE - Retail Intern -->
-    <div class="item">
-      <div class="item-header">
-        <div>NIKE – Retail Sales Intern</div>
-        <div class="item-time">2023–2024</div>
-      </div>
-      <div class="item-sub">Istanbul, Turkey</div>
-      <ul>
-        <li>Analyzed weekly business performance to identify risks and opportunities across 54 stores.</li>
-        <li>Developed Excel–Tableau reporting tools that enhanced visibility of store KPIs and supported the opening of 2 new retail locations.</li>
-        <li>Managed internal communication channels and produced event visuals, improving employee engagement and communication effectiveness.</li>
-      </ul>
-    </div>
-
-    <!-- NESINE -->
-    <div class="item">
-      <div class="item-header">
-        <div>Nesine – CRM Intern</div>
-        <div class="item-time">2024</div>
-      </div>
-      <div class="item-sub">Istanbul, Turkey</div>
-      <ul>
-        <li>Led KPI tracking and business performance initiatives, contributing to a 150% market share increase for atyarisi.com.</li>
-        <li>Designed and executed segmented marketing campaigns to enhance acquisition, engagement, and retention.</li>
-        <li>Developed a statistical racing product enriched with advanced metrics and logic, strengthening the platform’s competitive edge.</li>
-      </ul>
-    </div>
-
-    <!-- KPMG -->
-    <div class="item">
-      <div class="item-header">
-        <div>KPMG – Data Analytics & Digital Advisory Trainee</div>
-        <div class="item-time">2022–2023</div>
-      </div>
-      <div class="item-sub">Istanbul, Turkey</div>
-      <ul>
-        <li>Served as Scrum Master in a Data Flow transformation project for a major Iraqi telecom operator, improving execution efficiency by 45%.</li>
-        <li>Supported a data monetization project using generative AI to model customer reactions and uncover revenue opportunities.</li>
-      </ul>
-    </div>
-
-  </section>
-
-  <section>
-    <h2>Leadership & Activities</h2>
-    <div class="item">
-      <div class="item-header">
-        <div>ITU Industrial Engineering Society — Vice President</div>
-        <div class="item-time">2022–2023</div>
-      </div>
-      <ul>
-        <li>Oversaw strategic planning, budgeting, and management of 12 large-scale professional events.</li>
-      </ul>
-
-      <div class="item-header" style="margin-top:8px;">
-        <div>Social Activities Leader & Internal Relations</div>
-        <div class="item-time">2021–2022</div>
-      </div>
-      <ul>
-        <li>Organized 25+ online/offline events; managed sponsorships and internal communication operations.</li>
-      </ul>
-    </div>
-  </section>
-
 </div>
 
-<!-- RIGHT SIDE -->
-<div>
+<script>
+  (function() {
+    const root = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const iconSpan = document.getElementById('theme-icon');
+    const labelSpan = document.getElementById('theme-label');
 
-  <section>
-    <h2>Education</h2>
-    <div class="item">
-      <div class="item-header">
-        <div>Istanbul Technical University (ITU)</div>
-        <div class="item-time">2020–2025</div>
-      </div>
-      <div class="item-sub">B.Sc. Industrial Engineering — GPA: 3.08 / 4.00</div>
-      <p class="muted">
-        Relevant Coursework: People Analytics, Marketing & CRM Analytics, Decision Theory<br>
-        Thesis: Data Mining for Performance Analysis in Turkish Süper Lig (10 seasons) — Predictive modelling, pattern extraction and advanced performance metrics using Python.
-      </p>
-    </div>
-  </section>
+    function setTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      if (theme === 'dark') {
+        iconSpan.textContent = '🌞';
+        labelSpan.textContent = 'Light mode';
+      } else {
+        iconSpan.textContent = '🌙';
+        labelSpan.textContent = 'Dark mode';
+      }
+    }
 
-  <section>
-    <h2>Skills</h2>
-    <div class="pill-list">
-      <span class="pill">Python</span>
-      <span class="pill">SQL</span>
-      <span class="pill">MS Office</span>
-      <span class="pill">SAP</span>
-      <span class="pill">Tableau</span>
-      <span class="pill">SPSS</span>
-      <span class="pill">AutoCAD</span>
-      <span class="pill">Adobe Photoshop</span>
-    </div>
-  </section>
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark' || storedTheme === 'light') {
+      setTheme(storedTheme);
+    } else {
+      const prefersDark = window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(prefersDark ? 'dark' : 'light');
+    }
 
-  <section>
-    <h2>Languages</h2>
-    <ul>
-      <li>Turkish — Native</li>
-      <li>English — Advanced</li>
-      <li>French — Basic</li>
-      <li>German — Basic</li>
-    </ul>
-  </section>
+    toggleBtn.addEventListener('click', function() {
+      const current = root.getAttribute('data-theme') || 'light';
+      setTheme(current === 'light' ? 'dark' : 'light');
+    });
+  })();
+</script>
 
-</div>
-
-</main>
-
-<footer>
-  Last updated: 2025 — This page is built with static HTML.
-</footer>
-
-</div>
-</div>
 </body>
 </html>
