@@ -55,7 +55,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       margin-bottom: 24px;
       border-bottom: 1px solid var(--border);
@@ -71,20 +71,6 @@
     .name-block span {
       font-size: 0.95rem;
       color: var(--muted);
-    }
-
-    .contact {
-      text-align: right;
-      font-size: 0.9rem;
-    }
-
-    .contact a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .contact a:hover {
-      text-decoration: underline;
     }
 
     .tags {
@@ -109,6 +95,7 @@
       align-items: center;
       gap: 8px;
       margin-top: 12px;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -132,8 +119,27 @@
       transform: translateY(-1px);
     }
 
-    .btn span.icon {
+    .btn span.icon { font-size: 0.9rem; }
+
+    .right-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
       font-size: 0.9rem;
+    }
+
+    .contact {
+      text-align: right;
+    }
+
+    .contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
     }
 
     main {
@@ -145,8 +151,9 @@
 
     @media (max-width: 780px) {
       main { grid-template-columns: 1fr; }
+      header { flex-direction: column; align-items: flex-start; }
+      .right-header { align-items: flex-start; }
       .contact { text-align: left; }
-      header { align-items: flex-start; }
     }
 
     section { margin-bottom: 18px; }
@@ -240,17 +247,22 @@
         </div>
 
         <div class="btn-row">
-          <!-- PDF ismin cv.pdf ise burası aynı kalsın -->
           <a class="btn" href="cv.pdf" target="_blank" rel="noopener">
             <span class="icon">⬇️</span><span>Download PDF</span>
           </a>
         </div>
       </div>
 
-      <div class="contact">
-        <div><a href="mailto:caliskaniatahan@gmail.com">caliskaniatahan@gmail.com</a></div>
-        <div>+90 539 592 9192</div>
-        <div>Istanbul, Turkey</div>
+      <div class="right-header">
+        <div class="contact">
+          <div><a href="mailto:caliskaniatahan@gmail.com">caliskaniatahan@gmail.com</a></div>
+          <div>+90 539 592 9192</div>
+          <div>Istanbul, Turkey</div>
+        </div>
+        <button id="theme-toggle" class="btn" type="button">
+          <span class="icon" id="theme-icon">🌙</span>
+          <span id="theme-label">Dark mode</span>
+        </button>
       </div>
     </header>
 
@@ -384,15 +396,6 @@
             <li>French — Basic</li>
             <li>German — Basic</li>
           </ul>
-        </section>
-
-        <section>
-          <h2>Theme</h2>
-          <p class="muted">Switch between light and dark mode.</p>
-          <button id="theme-toggle" class="btn" type="button">
-            <span class="icon" id="theme-icon">🌙</span>
-            <span id="theme-label">Dark mode</span>
-          </button>
         </section>
       </div>
 
