@@ -28,6 +28,10 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, rgba(148,163,184,0.18), transparent 60%), var(--bg);
@@ -52,14 +56,98 @@
     }
 
     header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      border-color: var(--border);
+      background: rgba(37,99,235,0.04);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      background: transparent;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn span.icon { font-size: 0.9rem; }
+
+    .theme-btn {
+      border-color: var(--border);
+      color: var(--muted);
+    }
+
+    .theme-btn:hover {
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .name-row {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
       align-items: flex-start;
       justify-content: space-between;
-      margin-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 16px;
+      margin-bottom: 8px;
     }
 
     .name-block h1 {
@@ -94,38 +182,15 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-top: 12px;
+      margin-top: 10px;
       flex-wrap: wrap;
     }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      font-size: 0.85rem;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-      cursor: pointer;
-      background: transparent;
-      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
-    }
-
-    .btn:hover {
-      background: var(--accent);
-      color: #ffffff;
-      transform: translateY(-1px);
-    }
-
-    .btn span.icon { font-size: 0.9rem; }
 
     .right-header {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 8px;
+      gap: 4px;
       font-size: 0.9rem;
     }
 
@@ -142,6 +207,23 @@
       text-decoration: underline;
     }
 
+    @media (max-width: 780px) {
+      .top-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .right-header {
+        align-items: flex-start;
+      }
+      .contact {
+        text-align: left;
+      }
+    }
+
     main {
       margin-top: 16px;
       display: grid;
@@ -151,9 +233,6 @@
 
     @media (max-width: 780px) {
       main { grid-template-columns: 1fr; }
-      header { flex-direction: column; align-items: flex-start; }
-      .right-header { align-items: flex-start; }
-      .contact { text-align: left; }
     }
 
     section { margin-bottom: 18px; }
@@ -234,35 +313,50 @@
   <div class="card">
 
     <header>
-      <div class="name-block">
-        <h1>Ilyas Atahan Caliskan</h1>
-        <span>Industrial Engineering | Logistics Analyst | CRM & Marketing Analytics</span>
-
-        <div class="tags">
-          <span class="tag">Data Analytics</span>
-          <span class="tag">CRM & Growth</span>
-          <span class="tag">Python</span>
-          <span class="tag">SQL</span>
-          <span class="tag">Supply Chain</span>
-        </div>
-
-        <div class="btn-row">
-          <a class="btn" href="cv.pdf" target="_blank" rel="noopener">
-            <span class="icon">⬇️</span><span>Download PDF</span>
-          </a>
-        </div>
+      <div class="top-row">
+        <div class="brand">ATIHAN · RESUME</div>
+        <nav>
+          <div class="nav-links">
+            <a href="#summary">Summary</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <button id="theme-toggle" class="btn theme-btn" type="button">
+            <span class="icon" id="theme-icon">🌙</span>
+            <span id="theme-label">Dark</span>
+          </button>
+        </nav>
       </div>
 
-      <div class="right-header">
-        <div class="contact">
-          <div><a href="mailto:caliskaniatahan@gmail.com">caliskaniatahan@gmail.com</a></div>
-          <div>+90 539 592 9192</div>
-          <div>Istanbul, Turkey</div>
+      <div class="name-row">
+        <div class="name-block">
+          <h1>Ilyas Atahan Caliskan</h1>
+          <span>Industrial Engineering | Logistics Analyst | CRM & Marketing Analytics</span>
+
+          <div class="tags">
+            <span class="tag">Data Analytics</span>
+            <span class="tag">CRM & Growth</span>
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Supply Chain</span>
+          </div>
+
+          <div class="btn-row">
+            <a class="btn" href="cv.pdf" target="_blank" rel="noopener">
+              <span class="icon">⬇️</span><span>Download PDF</span>
+            </a>
+          </div>
         </div>
-        <button id="theme-toggle" class="btn" type="button">
-          <span class="icon" id="theme-icon">🌙</span>
-          <span id="theme-label">Dark mode</span>
-        </button>
+
+        <div class="right-header">
+          <div class="contact" id="contact">
+            <div><a href="mailto:caliskaniatahan@gmail.com">caliskaniatahan@gmail.com</a></div>
+            <div>+90 539 592 9192</div>
+            <div>Istanbul, Turkey</div>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -270,7 +364,7 @@
 
       <!-- LEFT SIDE -->
       <div>
-        <section>
+        <section id="summary">
           <h2>Summary</h2>
           <p class="muted">
             Data-driven Industrial Engineering graduate with experience in logistics operations, CRM analytics,
@@ -280,7 +374,7 @@
           </p>
         </section>
 
-        <section>
+        <section id="experience">
           <h2>Experience</h2>
 
           <div class="item">
@@ -359,7 +453,7 @@
 
       <!-- RIGHT SIDE -->
       <div>
-        <section>
+        <section id="education">
           <h2>Education</h2>
           <div class="item">
             <div class="item-header">
@@ -374,7 +468,7 @@
           </div>
         </section>
 
-        <section>
+        <section id="skills">
           <h2>Skills</h2>
           <div class="pill-list">
             <span class="pill">Python</span>
@@ -420,10 +514,10 @@
       localStorage.setItem('theme', theme);
       if (theme === 'dark') {
         iconSpan.textContent = '🌞';
-        labelSpan.textContent = 'Light mode';
+        labelSpan.textContent = 'Light';
       } else {
         iconSpan.textContent = '🌙';
-        labelSpan.textContent = 'Dark mode';
+        labelSpan.textContent = 'Dark';
       }
     }
 
